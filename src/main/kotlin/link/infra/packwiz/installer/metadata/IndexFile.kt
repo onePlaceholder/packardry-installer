@@ -36,7 +36,12 @@ data class IndexFile(
 			if (!metafile) {
 				return
 			}
-			val fileHash = getHashObj(index)
+            // Packardry - Start
+            if (file.filename.endsWith("cf.pw.toml")) {
+                return
+            }
+            // Packardry - End
+            val fileHash = getHashObj(index)
 			val src = file.source(clientHolder)
 			val fileStream = hashFormat(index).source(src)
 			linkedFile = ModFile.mapper(file).decode<ModFile>(fileStream.buffer().inputStream())

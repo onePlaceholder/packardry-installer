@@ -36,11 +36,6 @@ data class IndexFile(
 			if (!metafile) {
 				return
 			}
-            // Packardry - Start
-            if (file.filename.endsWith("cf.pw.toml")) {
-                return
-            }
-            // Packardry - End
             val fileHash = getHashObj(index)
 			val src = file.source(clientHolder)
 			val fileStream = hashFormat(index).source(src)

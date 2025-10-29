@@ -317,7 +317,9 @@ internal class DownloadTask private constructor(val metadata: IndexFile.File, va
 		fun createTasksFromIndex(index: IndexFile, downloadSide: Side): MutableList<DownloadTask> {
 			val tasks = ArrayList<DownloadTask>()
 			for (file in index.files) {
-				tasks.add(DownloadTask(file, index, downloadSide))
+                if (!file.name.endsWith("cf.pw.toml")) {
+                    tasks.add(DownloadTask(file, index, downloadSide))
+                }
 			}
 			return tasks
 		}
